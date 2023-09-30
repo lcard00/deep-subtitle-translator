@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "subtitle-translator"
+version = "0.1.0"
+description = ""
+authors = ["Leonardo Cardoso <lcard00@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+deep-translator = {version = "^1.11.4", extras = ["docx", "pdf", "ai"]}
+asyncio = "^3.4.3"
+pysubs2 = "^1.6.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

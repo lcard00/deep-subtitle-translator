@@ -1,9 +1,11 @@
 import os
 import asyncio
-import pysubs2
-import tracceback
-from deep_translator import GoogleTranslator
-from concurrent.futures import TrheadPoolExecutor
+import utils
 
-root_directory = "/home/lcard00/.torrents/courses/[Udemy] - The Complete 2023 Web Development Bootcamp/"
+root_dir = "/home/lcard00/.torrents/courses/[Udemy] - The Complete 2023 Web Development Bootcamp/"
 ext_in, ext_out = "_en.srt", "_ptbr.srt"
+ignore_list = ["external_links.txt"]
+
+files = utils.check_files(root_dir, ext_in, ignore_list)
+for file in files:
+    utils.split_srt(file, ext_in, ext_out)
