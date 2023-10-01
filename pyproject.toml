@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "subtitle-translator"
+name = "deep-subtitle-translate"
 version = "0.1.0"
 description = ""
 authors = ["Leonardo Cardoso <lcard00@outlook.com>"]
@@ -8,9 +8,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-deep-translator = {version = "^1.11.4", extras = ["docx", "pdf", "ai"]}
-asyncio = "^3.4.3"
-pysubs2 = "^1.6.1"
+python-dotenv = "^1.0.0"
+
 
 [build-system]
 requires = ["poetry-core"]

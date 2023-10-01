@@ -1,11 +1,15 @@
+from dotenv import load_dotenv
+import os
 import utils
+
+load_dotenv()
 
 root_dir = "/home/lcard00/.torrents/courses/[Udemy] - The Complete 2023 Web Development Bootcamp/"
 ext_in, ext_out = "_en.srt", "_ptbr.srt"
 ignore_list = ["external_links.txt"]
 
-api_key = "bd4a51a3ab8b4bf0b9153f0751727909"
-region = "brazilsouth"
+api_key = os.getenv("api_key")
+region = os.getenv("region")
 source = "en"
 target = "pt"
 
