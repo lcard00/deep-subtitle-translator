@@ -3,13 +3,14 @@ import time
 import traceback
 from multiprocessing.pool import ThreadPool
 
-from deep_translator import MicrosoftTranslator
+from deep_translator import MicrosoftTranslator, GoogleTranslator
 
 part_num = 1
 _api_key = ""
 _region = ""
 _source = ""
 _target = ""
+_translator = 1
 
 
 def read_list(file, list):
@@ -90,15 +91,20 @@ def split_srt(input_file, ext_in, ext_out, max_phrases=50, max_chars=5000):
         traceback.print_exc()
 
 
-def do_it(input_file, max_phrase=50, max_chars=5000):
+def do_it(_translator, input_file, max_phrase=50, max_chars=5000):
     time.sleep(0.500)
+    translator = ""
 
-    translator = MicrosoftTranslator(
-        api_key=_api_key,
-        region=_region,
-        source=_source,
-        target=_target,
-    )
+    if _translator == 1:
+        translator = MicrosoftTranslator(
+            api_key=_api_key,
+            region=_region,
+            source=_source,
+            target=_target,
+        )
+    elif _translator == 2:
+        translator = GoogleTranslator(source=_source, target=_target)
+
     try:
         with open(input_file, "r", encoding="utf-8") as f:
             translated = translator.translate_batch(f.readlines())
@@ -124,18 +130,27 @@ def list_files(file, ext_in):
 
 
 def translate_and_save(
-    api_key, region, source, target, input_file, ext_in="_en.srt", ext_out="_ptbr.srt"
+    translator,
+    api_key,
+    region,
+    source,
+    target,
+    input_file,
+    ext_in="_en.srt",
+    ext_out="_ptbr.srt",
 ):
     try:
         global _api_key
         global _region
         global _source
         global _target
+        global _translator
 
         _api_key = api_key
         _region = region
         _source = source
         _target = target
+        _translator = translator
 
         pool = ThreadPool(processes=10)
 
