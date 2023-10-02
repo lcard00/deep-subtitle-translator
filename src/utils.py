@@ -3,7 +3,7 @@ import time
 import traceback
 from multiprocessing.pool import ThreadPool
 
-from deep_translator import MicrosoftTranslator, GoogleTranslator
+from deep_translator import GoogleTranslator, MicrosoftTranslator
 
 part_num = 1
 _api_key = ""
@@ -91,7 +91,7 @@ def split_srt(input_file, ext_in, ext_out, max_phrases=50, max_chars=5000):
         traceback.print_exc()
 
 
-def do_it(_translator, input_file, max_phrase=50, max_chars=5000):
+def do_it(input_file, max_phrase=50, max_chars=5000):
     time.sleep(0.500)
     translator = ""
 
