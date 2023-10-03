@@ -8,7 +8,7 @@
 
 
 
-> Simples aplicativo feito em python para tradzir de forma automática legendas srt.
+> Simples aplicativo feito em python para traduzir de forma automática legendas srt.
 > Atualmente conta com suporte a GoogleTranslator e MicrosoftTranslator
 
 ### Ajustes e melhorias
