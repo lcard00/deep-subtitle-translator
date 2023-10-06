@@ -164,11 +164,10 @@ def translate_and_save(
             translated_parts = pool.map(do_it, temp_files)
 
             with open(translated_filename, "w", encoding="utf-8") as f:
-                if translated_parts:
-                    for translated_part in translated_parts:
-                        formatted_translation = "\n".join(translated_part)
-                        f.write(formatted_translation)
-                        f.write("\n\n")
+                for translated_part in translated_parts:
+                    formatted_translation = "\n".join(translated_part)
+                    f.write(formatted_translation)
+                    f.write("\n\n")
             f.close()
 
     except:
